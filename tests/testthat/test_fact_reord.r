@@ -1,5 +1,4 @@
 context("Reordering the factors")
-Sys.setenv("R_TESTS" = "")
 test_that("fact_reord reorders the factors",{
 	x <-c("This","is","test","examp")
 	z <- c(3,1,4,2)
