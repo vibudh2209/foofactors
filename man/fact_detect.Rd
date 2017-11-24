@@ -18,5 +18,5 @@ by comparing levels and factor (True means should be character)
 and false means should not be character
 }
 \examples{
-fact_detect(iris$species)
+fact_detect(iris$Species)
 }
