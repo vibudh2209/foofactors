@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' fact_detect(iris$species)
+#' fact_detect(iris$Species)
 fact_detect <- function(x){
 	if(is.factor(x)){
 		return(length(x)==length(levels(x)))
