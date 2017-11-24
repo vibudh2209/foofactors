@@ -15,7 +15,8 @@ fact_reord(x, y)
 Factor
 }
 \description{
-Reorder the levels according to given vector
+The output is the factor with levels in the order specified
+for individual character in vector x by vector y
 }
 \examples{
 fact_reord(c("This","is","test","examp"),c(3,1,4,2))
