@@ -1,5 +1,8 @@
 #' Reorder the levels according to given vector
 #'
+#' The output is the factor with levels in the order specified
+#' for individual character in vector x by vector y
+#'
 #' @param x Factor or character
 #' @param y numeric vector
 #'
@@ -11,7 +14,12 @@
 fact_reord <- function(x,y){
 	if(any(is.na(y)))stop("Please input non 'NA' vector y")
 	if(!is.numeric(y))stop("Input vector y is not a numeric vector")
-	x_fact=factor(x)
-	if(length(y)!=length(levels(x_fact)))stop("Your reordering vector is not the same length as levels")
-	levels(x_fact)[order(y)]
+	if(length(x)!=length(y))stop("Vectors should be of same length")
+	vec <- -dplyr::desc(x)
+	ordering=c()
+	for (i in 1:max(vec)){
+		ordering <- append(ordering,mean(y[which(vec==i)]))
+	}
+	x_fact <- factor(x,levels=levels(factor(x))[order(ordering)])
+	return(x_fact)
 }

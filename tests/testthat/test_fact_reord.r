@@ -1,9 +1,10 @@
 context("Reordering the factors")
-
+Sys.setenv("R_TESTS" = "")
 test_that("fact_reord reorders the factors",{
 	x <-c("This","is","test","examp")
-	z <- c(4,3,2,1)
-	z1 <- c(4,3,2,NA)
-	expect_identical(fact_reord(x,z),c("This","test","is","examp"))
-	expect_error(fact_reord(x,z1),"Please input non 'NA' vector y")
+	z <- c(3,1,4,2)
+	z1 <- c(3,2,1,4,5)
+	q <- factor(x,levels=c("is","examp","This","test"))
+	expect_error(fact_reord(x,z1),"Vectors should be of same length")
+	expect_identical(fact_reord(x,z),q)
 })
