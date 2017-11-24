@@ -1,6 +1,6 @@
 ---
 title: "stringsAsFactors = HELLNO"
-author: "Jenny Bryan"
+author: "Vibudh Agrawal"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -47,4 +47,50 @@ The `freq_out()` function returns a frequency table as a well-named `tbl_df`:
 ```{r}
 freq_out(x)
 ```
+
+Detecting whether a given factor should be character fact_detect():
+
+Sometime factors are the same as characters as there are no redundant charaters so not required and might be difficult to check if the input is huge:
+
+```{r}
+a <- factor(c("this","is","test","case"))
+print(a)
+```
+
+fact_detect() retuen true if factors are not (i.e. factors are characters) required and false if factors are required 
+
+```{r}
+fact_detect(a)
+```
+
+
+Converting the order of factors to given by user fact_reord():
+
+Levels are always in the ascending order:
+```{r}
+a <- c("This","is","test","examp")
+factor(a)
+```
+
+If we want to plot the order of plotting is based on levels and not data so we might want to reorder our levels:
+```{r}
+fact_reord(a,c(4,3,2,1))
+```
+
+Changing the order of levels to that of original character vector fact_orig():
+
+Levels are always in the ascending order:
+```{r}
+a <- c("This","is","test","examp")
+factor(a)
+```
+
+Sometimes we want the levels to be exactly that of our given input character vector:
+```{r}
+fact_orig(a)
+```
+
+
+
+
 

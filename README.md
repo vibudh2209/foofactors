@@ -8,7 +8,7 @@ Factors are a very useful type of variable in R, but they can also drive you nut
 ### Installation
 
 ``` r
-devtools::install_github("jennybc/foofactors")
+devtools::install_github("vibudh2209/foofactors")
 ```
 
 ### Quick demo
@@ -59,7 +59,7 @@ The `freq_out()` function returns a frequency table as a well-named `tbl_df`:
 
 ``` r
 freq_out(x)
-#> # A tibble: 5 × 2
+#> # A tibble: 5 x 2
 #>        x     n
 #>   <fctr> <int>
 #> 1      a    25
@@ -67,4 +67,60 @@ freq_out(x)
 #> 3      c    17
 #> 4      d    17
 #> 5      e    15
+```
+
+Detecting whether a given factor should be character fact\_detect():
+
+Sometime factors are the same as characters as there are no redundant charaters so not required and might be difficult to check if the input is huge:
+
+``` r
+a <- factor(c("this","is","test","case"))
+print(a)
+#> [1] this is   test case
+#> Levels: case is test this
+```
+
+fact\_detect() retuen true if factors are not (i.e. factors are characters) required and false if factors are required
+
+``` r
+fact_detect(a)
+#> [1] TRUE
+```
+
+Converting the order of factors to given by user fact\_reord():
+
+Levels are always in the ascending order:
+
+``` r
+a <- c("This","is","test","examp")
+factor(a)
+#> [1] This  is    test  examp
+#> Levels: examp is test This
+```
+
+If we want to plot the order of plotting is based on levels and not data so we might want to reorder our levels:
+
+``` r
+fact_reord(a,c(4,3,2,1))
+#> [1] This  is    test  examp
+#> Levels: examp test is This
+```
+
+Changing the order of levels to that of original character vector fact\_orig():
+
+Levels are always in the ascending order:
+
+``` r
+a <- c("This","is","test","examp")
+factor(a)
+#> [1] This  is    test  examp
+#> Levels: examp is test This
+```
+
+Sometimes we want the levels to be exactly that of our given input character vector:
+
+``` r
+fact_orig(a)
+#> [1] This  is    test  examp
+#> Levels: This is test examp
 ```
